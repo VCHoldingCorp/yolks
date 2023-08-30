@@ -3,7 +3,14 @@ FROM        --platform=$TARGETOS/$TARGETARCH node:20-bullseye-slim
 LABEL       author="Michael Parker" maintainer="parker@pterodactyl.io"
 
 RUN         apt update \
-            && apt -y install ffmpeg iproute2 git sqlite3 libsqlite3-dev python3 python3-dev ca-certificates dnsutils tzdata zip tar curl build-essential libtool iputils-ping \
+            && apt -y install ffmpeg iproute2 git sqlite3 libsqlite3-dev python3 python3-dev ca-certificates dnsutils tzdata zip tar curl build-essential libtool iputils-ping wget gnupg libcairo2-dev libpango1.0-dev libjpeg-dev libgif-dev librsvg2-dev \
+			&& wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | gpg --dearmor -o /usr/share/keyrings/googlechrome-linux-keyring.gpg \
+    		&& sh -c 'echo "deb [arch=amd64 signed-by=/usr/share/keyrings/googlechrome-linux-keyring.gpg] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list' \
+	  		&& apt-get update \
+	 		&& apt-get install -y google-chrome-stable fonts-ipafont-gothic fonts-wqy-zenhei fonts-thai-tlwg fonts-khmeros fonts-kacst fonts-freefont-ttf libxss1 \
+				--no-install-recommends \
+			&& rm -rf /var/lib/apt/lists/* \
+   			&& groupadd -r container && useradd -rm -g container -G audio,video container
             && useradd -m -d /home/container container
 
 RUN         npm install npm@latest typescript ts-node @types/node --location=global
