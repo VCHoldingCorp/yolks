@@ -10,7 +10,7 @@ RUN         apt update \
 	 		&& apt-get install -y google-chrome-stable fonts-ipafont-gothic fonts-wqy-zenhei fonts-thai-tlwg fonts-khmeros fonts-kacst fonts-freefont-ttf libxss1 \
 				--no-install-recommends \
 			&& rm -rf /var/lib/apt/lists/* \
-   			&& groupadd -r container && useradd -rm -g container -G audio,video container
+   			&& groupadd -r container && useradd -rm -g container -G audio,video container \
             && useradd -m -d /home/container container
 
 RUN         npm install npm@latest typescript ts-node @types/node --location=global
