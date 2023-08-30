@@ -15,7 +15,7 @@ ADD 		https://github.com/Yelp/dumb-init/releases/download/v1.2.2/dumb-init_1.2.2
 RUN 		chmod +x /usr/local/bin/dumb-init
 ENTRYPOINT 	["dumb-init", "--"]
 
-RUN         npm install npm@latest -g
+RUN         npm install npm@latest typescript ts-node @types/node --location=global
 
 USER        container
 ENV         USER=container HOME=/home/container
