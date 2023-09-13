@@ -1,8 +1,6 @@
 name: build cassandra
 on:
   workflow_dispatch:
-  schedule:
-    - cron: "0 0 * * 1"
   push:
     branches:
       - master
@@ -35,4 +33,4 @@ jobs:
           platforms: linux/amd64
           push: true
           tags: |
-            ghcr.io/parkervcp/yolks:cassandra_${{ matrix.tag }}
+            ghcr.io/vcholdingcorp/yolks:cassandra_${{ matrix.tag }}

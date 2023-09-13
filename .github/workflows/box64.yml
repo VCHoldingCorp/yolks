@@ -1,8 +1,6 @@
 name: build box64
 on:
   workflow_dispatch:
-  schedule:
-    - cron: "0 0 * * 1"
   push:
     branches:
       - master
@@ -35,4 +33,4 @@ jobs:
           platforms: linux/arm64
           push: true
           tags: |
-            ghcr.io/parkervcp/yolks:${{ matrix.tag }}
+            ghcr.io/vcholdingcorp/yolks:${{ matrix.tag }}
