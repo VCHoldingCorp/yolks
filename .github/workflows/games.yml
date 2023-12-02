@@ -39,7 +39,7 @@ jobs:
           platforms: linux/amd64
           push: true
           tags: |
-            ghcr.io/parkervcp/games:${{ matrix.game }}
+            ghcr.io/vcholdingcorp/games:${{ matrix.game }}
   pushAll:
     name: "games_All:${{ matrix.game }}"
     runs-on: ubuntu-latest
@@ -70,4 +70,4 @@ jobs:
           platforms: linux/amd64,linux/arm64
           push: true
           tags: |
-            ghcr.io/parkervcp/games:${{ matrix.game }}
+            ghcr.io/vcholdingcorp/games:${{ matrix.game }}
